@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Understand Paris</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;1,8..60,400;1,8..60,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;1,8..60,400;1,8..60,500&family=Permanent+Marker&display=swap" rel="stylesheet">
 <style>
   :root{
     --cream:#F4F0E8;
@@ -35,10 +35,8 @@
     display:flex;align-items:center;justify-content:space-between;
     padding:26px 40px;max-width:1180px;margin:0 auto;
   }
-  .logo{
-    font-family:'Source Serif 4',serif;font-size:19px;line-height:1.15;
-    letter-spacing:.03em;text-transform:uppercase;font-weight:500;
-  }
+  .logo{display:flex;align-items:center;}
+  .logo img{height:52px;width:auto;display:block;}
   nav ul{display:flex;gap:38px;list-style:none;}
   nav a{font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);transition:color .2s;}
   nav a:hover{color:var(--ink);}
@@ -142,7 +140,7 @@
   .about-text h2{font-family:'Source Serif 4',serif;font-weight:400;font-size:19px;margin-bottom:6px;}
   .about-text h2 em{font-style:italic;color:var(--green);}
   .about-text p{font-size:12.5px;line-height:1.55;color:var(--ink-soft);margin-bottom:5px;}
-  .about-text .signature{font-size:15px;margin-top:4px;display:inline-block;}
+  .about-text .signature{font-family:'Permanent Marker',cursive;font-style:normal;font-size:22px;margin-top:6px;display:inline-block;color:var(--green);}
   .direct-line{font-family:'Source Serif 4',serif;font-style:italic;color:var(--ink)!important;font-size:13.5px!important;margin-top:2px!important;}
   .about-social{display:inline-flex;align-items:center;gap:8px;margin-top:16px;font-size:12.5px;letter-spacing:.03em;color:var(--ink);border:1px solid var(--ink);border-radius:20px;padding:7px 14px 7px 10px;transition:background .2s,color .2s;}
   .about-social:hover{background:var(--ink);color:#fff;}
@@ -235,11 +233,11 @@
 <body>
 
 <header>
-  <div class="logo">UNDERSTAND<br>PARIS</div>
+  <a href="#" class="logo"><img src="logo-round.png" alt="Understand Paris"></a>
   <nav><ul>
     <li><a href="#services">SERVICES</a></li>
     <li><a href="#about">ABOUT</a></li>
-    <li><a href="#kind-words">KIND WORDS</a></li>
+    <li><a href="https://www.instagram.com/understand.paris/" target="_blank" rel="noopener">INSTAGRAM</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul></nav>
   <a href="#contact" class="btn">GET IN TOUCH
@@ -324,7 +322,7 @@
 <section class="profile-section" id="about">
   <div class="profile-inner">
     <div class="about-photo">
-      <img src="photolili.jpg" alt="Lili">
+      <img src="lili-portrait.jpg" alt="Lili">
     </div>
     <div class="about-text">
       <div class="eyebrow">ABOUT ME</div>
@@ -380,11 +378,11 @@
   <div class="eyebrow">FOLLOW ALONG</div>
   <h2>Paris, one photo at a time.</h2>
   <div class="ig-grid">
-      <a class="ig-item" href="https://www.instagram.com/understand.paris/" target="_blank" rel="noopener"><img src="aperotime.jpeg" alt="Instagram post"><span class="ig-hover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1"/></svg></span></a>
+      <a class="ig-item" href="https://www.instagram.com/understand.paris/" target="_blank" rel="noopener"><img src="restaurant.jpg" alt="Instagram post"><span class="ig-hover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1"/></svg></span></a>
       <a class="ig-item" href="https://www.instagram.com/understand.paris/" target="_blank" rel="noopener"><img src="vue-sur-paris.jpg" alt="Instagram post"><span class="ig-hover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1"/></svg></span></a>
-      <a class="ig-item" href="https://www.instagram.com/understand.paris/" target="_blank" rel="noopener"><img src="pinaultfondation.jpeg" alt="Instagram post"><span class="ig-hover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1"/></svg></span></a>
-      <a class="ig-item" href="https://www.instagram.com/understand.paris/" target="_blank" rel="noopener"><img src="IMG_7723.jpeg" alt="Instagram post"><span class="ig-hover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1"/></svg></span></a>
-      <a class="ig-item" href="https://www.instagram.com/understand.paris/" target="_blank" rel="noopener"><img src="hotelamour.jpeg" alt="Instagram post"><span class="ig-hover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1"/></svg></span></a>
+      <a class="ig-item" href="https://www.instagram.com/understand.paris/" target="_blank" rel="noopener"><img src="concept-store.jpg" alt="Instagram post"><span class="ig-hover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1"/></svg></span></a>
+      <a class="ig-item" href="https://www.instagram.com/understand.paris/" target="_blank" rel="noopener"><img src="le-marais.jpg" alt="Instagram post"><span class="ig-hover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1"/></svg></span></a>
+      <a class="ig-item" href="https://www.instagram.com/understand.paris/" target="_blank" rel="noopener"><img src="lili-portrait.jpg" alt="Instagram post"><span class="ig-hover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1"/></svg></span></a>
   </div>
   <a class="ig-cta" href="https://www.instagram.com/understand.paris/" target="_blank" rel="noopener">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1"/></svg>
