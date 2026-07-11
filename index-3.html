@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Understand Paris</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;1,8..60,400;1,8..60,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F4F0E8;
+    --cream-dark:#EDE7D9;
+    --ink:#242119;
+    --ink-soft:#54503f;
+    --green:#4B5D41;
+    --green-dark:#3A4A32;
+    --terracotta:#CC785C;
+    --terracotta-dark:#B8623F;
+    --line:#DAD3C0;
+    --panel:#E7E0CC;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+  }
+  .serif{font-family:'Source Serif 4',serif;}
+  a{text-decoration:none;color:inherit;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 40px;}
+
+  /* NAV */
+  header{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:26px 40px;max-width:1180px;margin:0 auto;
+  }
+  .logo{
+    font-family:'Source Serif 4',serif;font-size:19px;line-height:1.15;
+    letter-spacing:.03em;text-transform:uppercase;font-weight:500;
+  }
+  nav ul{display:flex;gap:38px;list-style:none;}
+  nav a{font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);transition:color .2s;}
+  nav a:hover{color:var(--ink);}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--green);color:#fff;
+    padding:12px 22px;border-radius:3px;font-size:13px;
+    letter-spacing:.04em;text-transform:uppercase;font-weight:500;
+    border:none;cursor:pointer;transition:background .2s;
+  }
+  .btn:hover{background:var(--green-dark);}
+  .btn svg{width:14px;height:14px;}
+  .btn-outline{
+    display:inline-flex;align-items:center;gap:10px;
+    background:transparent;color:var(--ink);
+    padding:12px 0;font-size:13px;letter-spacing:.04em;
+    text-transform:uppercase;font-weight:500;
+    border-bottom:1px solid var(--ink);
+  }
+
+  /* HERO */
+  .hero{
+    display:grid;grid-template-columns:1fr 1.15fr;gap:56px;
+    max-width:1180px;margin:36px auto 70px;padding:0 40px;align-items:center;
+  }
+  .hero h1{
+    font-family:'Source Serif 4',serif;font-weight:400;font-size:56px;line-height:1.06;
+    letter-spacing:-.01em;margin-bottom:26px;
+  }
+  .hero h1 em{font-style:italic;color:var(--green);font-weight:400;}
+  .hero .rule{width:44px;height:2px;background:var(--ink);margin-bottom:22px;}
+  .hero p{
+    font-size:15.5px;line-height:1.7;color:var(--ink-soft);max-width:440px;margin-bottom:20px;
+  }
+  .hero .tagline{font-style:italic;font-family:'Source Serif 4',serif;font-size:16px;color:var(--ink);margin-bottom:32px;}
+  .hero-actions{display:flex;align-items:center;gap:34px;}
+  .hero-img{position:relative;border-radius:4px;overflow:hidden;height:480px;}
+  .hero-img img{width:100%;height:100%;object-fit:cover;display:block;}
+  .img-tag{
+    position:absolute;left:0;bottom:0;padding:22px 26px;color:#fff;
+    background:linear-gradient(0deg,rgba(0,0,0,.55),transparent 70%);
+    width:100%;
+  }
+  .img-tag .t1{font-family:'Source Serif 4',serif;font-size:18px;margin-bottom:3px;}
+  .img-tag .t2{font-size:12.5px;opacity:.85;letter-spacing:.03em;}
+
+  /* GALLERY */
+  .gallery{max-width:1180px;margin:0 auto 26px;padding:0 40px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .gallery-item{position:relative;border-radius:4px;overflow:hidden;height:230px;background:#ddd;}
+  .gallery-item img{width:100%;height:100%;object-fit:cover;display:block;}
+  .gallery-item .img-tag{padding:16px 18px;}
+  .gallery-item .img-tag .t1{font-size:15px;}
+  .gallery-item .img-tag .t2{font-size:11.5px;}
+  .dots{display:flex;justify-content:center;gap:8px;margin:22px 0 70px;}
+  .dots span{width:7px;height:7px;border-radius:50%;background:var(--line);display:block;}
+  .dots span.active{background:var(--green);width:20px;border-radius:4px;}
+
+  /* SERVICES */
+  .services{max-width:1180px;margin:0 auto;padding:10px 40px 90px;text-align:center;}
+  .eyebrow{
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--green);
+    font-weight:600;margin-bottom:14px;
+  }
+  .services h2{font-family:'Source Serif 4',serif;font-weight:400;font-size:34px;margin-bottom:12px;}
+  .services-sub{font-family:'Source Serif 4',serif;font-style:italic;font-size:16px;color:var(--ink-soft);margin-bottom:54px;}
+  .service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;text-align:left;}
+  .service-card{padding:0 28px;position:relative;}
+  .service-card + .service-card{border-left:1px solid var(--line);}
+  .service-icon{
+    width:44px;height:44px;border-radius:50%;background:var(--terracotta);
+    display:flex;align-items:center;justify-content:center;margin-bottom:22px;
+  }
+  .service-icon svg{width:19px;height:19px;stroke:#fff;fill:none;}
+  .service-card h3{font-family:'Source Serif 4',serif;font-weight:500;font-size:19px;line-height:1.3;margin-bottom:10px;}
+  .service-price{
+    display:inline-block;font-size:12.5px;color:var(--green);font-weight:600;
+    background:rgba(75,93,65,.1);padding:4px 10px;border-radius:20px;margin-bottom:14px;
+  }
+  .service-card p{font-size:13.8px;line-height:1.65;color:var(--ink-soft);margin-bottom:18px;min-height:64px;}
+  .learn-more{
+    display:inline-flex;align-items:center;gap:7px;font-size:12.5px;
+    text-transform:uppercase;letter-spacing:.04em;font-weight:600;color:var(--ink);
+    border-bottom:1px solid var(--ink);padding-bottom:2px;
+  }
+
+  /* FAQ */
+  .faq{max-width:920px;margin:0 auto;padding:56px 40px 60px;text-align:center;background:var(--cream);}
+  .faq h2{font-family:'Source Serif 4',serif;font-weight:400;font-size:25px;margin-bottom:32px;}
+  .faq-list{text-align:left;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;column-gap:44px;}
+  .faq-item{padding:16px 2px;border-bottom:1px solid var(--line);}
+  .faq-item h3{font-family:'Source Serif 4',serif;font-weight:500;font-size:14.5px;margin-bottom:6px;}
+  .faq-item p{font-size:12.5px;line-height:1.55;color:var(--ink-soft);}
+
+  /* ABOUT */
+  .profile-section{background:var(--panel);padding:34px 40px;}
+  .profile-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;gap:28px;}
+  .about-photo{flex:0 0 88px;width:88px;height:88px;border-radius:50%;overflow:hidden;border:3px solid #fbf8f0;box-shadow:0 2px 10px rgba(36,33,25,.12);}
+  .about-photo img{width:100%;height:100%;object-fit:cover;object-position:center 18%;display:block;}
+  .about-text{flex:1;min-width:0;}
+  .about-text .eyebrow{text-align:left;margin-bottom:4px;}
+  .about-text h2{font-family:'Source Serif 4',serif;font-weight:400;font-size:19px;margin-bottom:6px;}
+  .about-text h2 em{font-style:italic;color:var(--green);}
+  .about-text p{font-size:12.5px;line-height:1.55;color:var(--ink-soft);margin-bottom:5px;}
+  .about-text .signature{font-size:15px;margin-top:4px;display:inline-block;}
+  .direct-line{font-family:'Source Serif 4',serif;font-style:italic;color:var(--ink)!important;font-size:13.5px!important;margin-top:2px!important;}
+  .about-social{display:inline-flex;align-items:center;gap:8px;margin-top:16px;font-size:12.5px;letter-spacing:.03em;color:var(--ink);border:1px solid var(--ink);border-radius:20px;padding:7px 14px 7px 10px;transition:background .2s,color .2s;}
+  .about-social:hover{background:var(--ink);color:#fff;}
+  .about-social svg{width:16px;height:16px;}
+  .signature{font-family:'Source Serif 4',serif;font-style:italic;font-size:22px;margin-top:22px;}
+
+  /* INSTAGRAM */
+  .ig-section{max-width:1000px;margin:0 auto;padding:0 40px 70px;text-align:center;}
+  .ig-section h2{font-family:'Source Serif 4',serif;font-weight:400;font-size:25px;margin-bottom:30px;}
+  .ig-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:28px;}
+  .ig-item{position:relative;display:block;aspect-ratio:1/1;border-radius:8px;overflow:hidden;}
+  .ig-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;}
+  .ig-hover{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(36,33,25,0);color:#fff;opacity:0;transition:opacity .25s,background .25s;}
+  .ig-hover svg{width:22px;height:22px;}
+  .ig-item:hover img{transform:scale(1.06);}
+  .ig-item:hover .ig-hover{opacity:1;background:rgba(36,33,25,.32);}
+  .ig-cta{display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:500;letter-spacing:.02em;color:var(--terracotta-dark);border-bottom:1px solid var(--terracotta-dark);padding-bottom:3px;}
+  .ig-cta svg{width:17px;height:17px;}
+  @media(max-width:700px){.ig-grid{grid-template-columns:repeat(3,1fr);}}
+
+  /* MARQUEE */
+  .marquee{overflow:hidden;background:var(--green);}
+  .marquee-track{display:flex;width:max-content;animation:marquee-scroll 24s linear infinite;}
+  .marquee-group{display:flex;align-items:center;flex-shrink:0;}
+  .marquee-group span{white-space:nowrap;color:#fff;font-family:'Source Serif 4',serif;font-style:italic;font-size:14.5px;letter-spacing:.02em;padding:13px 22px;opacity:.95;}
+  @keyframes marquee-scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+  @media(prefers-reduced-motion:reduce){.marquee-track{animation:none;}}
+
+  .form-section{background:var(--cream-dark);padding:70px 40px;}
+  .form-panel{
+    max-width:600px;margin:0 auto;position:relative;
+    background:#fbf7ee;
+    border-radius:26px;
+    padding:58px 54px 50px;
+    box-shadow:0 24px 60px -18px rgba(36,33,25,.22), 0 2px 10px rgba(36,33,25,.06);
+    border:1px solid rgba(75,93,65,.14);
+  }
+  .letter-seal{
+    position:absolute;top:-22px;right:46px;width:52px;height:52px;
+    background:var(--terracotta);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 6px 14px -4px rgba(204,120,92,.55);
+    transform:rotate(-8deg);
+  }
+  .letter-seal svg{width:24px;height:24px;stroke:#fff;fill:none;}
+  .letter-greeting{font-family:'Source Serif 4',serif;font-style:italic;font-size:20px;color:var(--ink);margin-bottom:4px;}
+  .form-panel .eyebrow{text-align:left;color:var(--terracotta);}
+  .form-tagline{font-family:'Source Serif 4',serif;font-style:italic;font-size:15.5px;color:var(--ink-soft);margin:6px 0 24px;}
+  .form-tagline strong{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-style:normal;font-weight:700;color:var(--terracotta-dark);}
+  .form-panel h2{font-family:'Source Serif 4',serif;font-weight:400;font-size:24px;margin-bottom:30px;line-height:1.35;}
+  .field{margin-bottom:14px;}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  input[type=text],input[type=email],input[type=date],input[type=datetime-local],select,textarea{
+    width:100%;padding:13px 16px;border:1px solid rgba(75,93,65,.2);border-radius:12px;
+    background:#fff;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:13.5px;color:var(--ink);
+  }
+  textarea{min-height:90px;resize:vertical;}
+  .radio-group{display:flex;flex-direction:column;gap:14px;margin-bottom:14px;}
+  .radio-group label{font-size:12.5px;color:var(--ink-soft);margin-bottom:6px;display:block;}
+  .radio-opts{display:flex;gap:22px;}
+  .radio-opts span{display:flex;align-items:center;gap:7px;font-size:13.5px;}
+  .radio-opts input{accent-color:var(--terracotta);}
+  .submit-btn{width:100%;justify-content:center;margin-top:8px;border-radius:24px;background:var(--terracotta);}
+  .submit-btn:hover{background:var(--terracotta-dark);}
+  .tz-field{background:#f4ede1;border:1px solid rgba(204,120,92,.25);border-radius:14px;padding:14px 18px;margin-bottom:14px;}
+  .tz-label{display:block;font-size:12.5px;color:var(--ink-soft);margin-bottom:8px;}
+  .tz-label span{font-weight:400;opacity:.75;}
+  .tz-note{font-size:12px;color:var(--terracotta-dark);margin-top:8px;line-height:1.5;}
+  .contact-email{font-size:12.5px;color:var(--ink-soft);margin-top:16px;}
+  .contact-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:16px;}
+  .contact-footer .contact-email{margin-top:0;}
+  .ig-link{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:500;color:var(--green-dark);}
+  .ig-link svg{width:17px;height:17px;}
+  .ig-link:hover{color:var(--green);}
+
+  @media(max-width:980px){
+    nav ul{display:none;}
+    .hero{grid-template-columns:1fr;}
+    .hero-img{height:320px;}
+    .gallery{grid-template-columns:1fr;}
+    .service-grid{grid-template-columns:1fr 1fr;row-gap:40px;}
+    .service-card + .service-card{border-left:none;}
+    .profile-inner{flex-direction:column;text-align:center;gap:14px;}
+    .about-text .eyebrow{text-align:center;}
+    .field-row{grid-template-columns:1fr;}
+    .form-section{padding:60px 24px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">UNDERSTAND<br>PARIS</div>
+  <nav><ul>
+    <li><a href="#services">SERVICES</a></li>
+    <li><a href="#about">ABOUT</a></li>
+    <li><a href="#kind-words">KIND WORDS</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul></nav>
+  <a href="#contact" class="btn">GET IN TOUCH
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+  </a>
+</header>
+
+<section class="hero">
+  <div>
+    <h1>Understand Paris<br><em>your</em> way.</h1>
+    <div class="rule"></div>
+    <p>Assisting visitors in exploring Paris with ease, like a local. Curated itineraries that match your vision, from centuries-old façades to cutting-edge galleries, hidden courtyards to concept stores. Arrive with a plan, not a search engine. Skip the research phase and start living like a local from hour one.</p>
+    <p class="tagline">Your Paris. Not everyone else's.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn">GET IN TOUCH
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="#services" class="btn-outline">LEARN MORE →</a>
+    </div>
+  </div>
+  <div class="hero-img">
+    <img src="images/restaurant.jpg" alt="Restaurant, Paris 11">
+    <div class="img-tag">
+      <div class="t1">Restaurant, Paris 11</div>
+      <div class="t2">21h34 · Paris 11th</div>
+    </div>
+  </div>
+</section>
+
+<div class="gallery">
+  <div class="gallery-item">
+    <img src="images/vue-sur-paris.jpg" alt="Vue sur Paris">
+    <div class="img-tag"><div class="t1">Vue sur Paris</div><div class="t2">20h11</div></div>
+  </div>
+  <div class="gallery-item">
+    <img src="images/concept-store.jpg" alt="Concept Store, Paris 02">
+    <div class="img-tag"><div class="t1">Concept Store, Paris 02</div><div class="t2">17h42</div></div>
+  </div>
+  <div class="gallery-item">
+    <img src="images/le-marais.jpg" alt="Le Marais, Paris">
+    <div class="img-tag"><div class="t1">Le Marais, Paris</div><div class="t2">19h07</div></div>
+  </div>
+</div>
+<div class="dots"><span class="active"></span><span></span><span></span></div>
+
+<section class="services" id="services">
+  <div class="eyebrow">SERVICES</div>
+  <h2>A more meaningful Paris.</h2>
+  <p class="services-sub">An alternative to everything you've already seen.</p>
+  <div class="service-grid">
+    <div class="service-card">
+      <div class="service-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+      <h3>City guidance &amp; itineraries</h3>
+      <span class="service-price">Sessions from €80 — in Paris</span>
+      <p>Personalized itineraries and local guidance to explore Paris with ease.</p>
+      <a href="#contact" class="learn-more" onclick="return goToService('City guidance')">LEARN MORE →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M15 14.5c2.5.2 4.5 2.4 4.5 5.5"/></svg></div>
+      <h3>Family &amp; Friends experiences</h3>
+      <span class="service-price">&nbsp;</span>
+      <p>Activities and recommendations adapted to families and groups of friends.</p>
+      <a href="#contact" class="learn-more" onclick="return goToService('Family &amp; Friends')">LEARN MORE →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-8-5-8-11.5A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 8 3.5C20 16 12 21 12 21z"/></svg></div>
+      <h3>Marriage proposal planning</h3>
+      <span class="service-price">&nbsp;</span>
+      <p>Discreet, romantic and unforgettable proposals, thought out down to the smallest detail.</p>
+      <a href="#contact" class="learn-more" onclick="return goToService('Marriage proposal')">LEARN MORE →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V10l8-6 8 6v11"/><path d="M9 21v-6h6v6"/></svg></div>
+      <h3>Events &amp; special occasions</h3>
+      <span class="service-price">&nbsp;</span>
+      <p>Private dinners, birthdays and bespoke events in unique Parisian locations.</p>
+      <a href="#contact" class="learn-more" onclick="return goToService('Events')">LEARN MORE →</a>
+    </div>
+  </div>
+</section>
+
+<section class="profile-section" id="about">
+  <div class="profile-inner">
+    <div class="about-photo">
+      <img src="images/lili-portrait.jpg" alt="Lili">
+    </div>
+    <div class="about-text">
+      <div class="eyebrow">ABOUT ME</div>
+      <h2>Hi, I'm <em>Lili</em>.</h2>
+      <p>Born and raised in Paris, I've spent my life learning this city's rhythms and hidden corners — and worked for years as an event &amp; PR professional in art, luxury and hospitality.</p>
+      <p>When you book a session with me, you're not getting a list — you're getting a conversation with someone who genuinely loves this place and wants you to love it too.</p>
+      <p class="direct-line">Tell me what you're looking for, and I'll show you where to find it.</p>
+      <div class="signature">Lili ♡</div>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="eyebrow">COMMON QUESTIONS</div>
+  <h2>Everything you need before you arrive.</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <h3>How far in advance should I book?</h3>
+      <p>As soon as possible — especially peak season (spring and summer). That said, I do my best to accommodate last-minute requests.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Sessions in English or French?</h3>
+      <p>Both! I work fluently in English and French, so we go with whatever feels most comfortable for you.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What happens after our session?</h3>
+      <p>For video calls, you receive a written summary and resource sheet. For in-person sessions, I'm available for follow-up questions afterwards.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can I book more than one session?</h3>
+      <p>Absolutely. Many clients book a video call before their trip and an in-person session once they arrive — it's a great combination.</p>
+    </div>
+    <div class="faq-item">
+      <h3>I've already planned everything — can you still help?</h3>
+      <p>Yes — I offer itinerary reviews too. I'll spot the gaps and help you make it even better.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Do you work with families and groups?</h3>
+      <p>Of course. I adapt every session — solo, couple, family with kids, friends, business travellers, all welcome!</p>
+    </div>
+    <div class="faq-item">
+      <h3>What values guide your work?</h3>
+      <p>Supporting local, independent businesses — neighbourhood bistros, boutiques, artisan makers. Proudly eco-conscious too.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How does payment work?</h3>
+      <p>No upfront payment — settle via PayPal after your session, and your PDF recap follows immediately.</p>
+    </div>
+  </div>
+</section>
+
+<section class="ig-section">
+  <div class="eyebrow">FOLLOW ALONG</div>
+  <h2>Paris, one photo at a time.</h2>
+  <div class="ig-grid">
+      <a class="ig-item" href="https://www.instagram.com/understand.paris/" target="_blank" rel="noopener"><img src="images/restaurant.jpg" alt="Instagram post"><span class="ig-hover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1"/></svg></span></a>
+      <a class="ig-item" href="https://www.instagram.com/understand.paris/" target="_blank" rel="noopener"><img src="images/vue-sur-paris.jpg" alt="Instagram post"><span class="ig-hover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1"/></svg></span></a>
+      <a class="ig-item" href="https://www.instagram.com/understand.paris/" target="_blank" rel="noopener"><img src="images/concept-store.jpg" alt="Instagram post"><span class="ig-hover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1"/></svg></span></a>
+      <a class="ig-item" href="https://www.instagram.com/understand.paris/" target="_blank" rel="noopener"><img src="images/le-marais.jpg" alt="Instagram post"><span class="ig-hover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1"/></svg></span></a>
+      <a class="ig-item" href="https://www.instagram.com/understand.paris/" target="_blank" rel="noopener"><img src="images/lili-portrait.jpg" alt="Instagram post"><span class="ig-hover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1"/></svg></span></a>
+  </div>
+  <a class="ig-cta" href="https://www.instagram.com/understand.paris/" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1"/></svg>
+    View more @understand.paris
+  </a>
+</section>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <div class="marquee-group">
+      <span>Looking for a meaningful trip?</span><span>·</span>
+      <span>Contact me</span><span>·</span>
+      <span>Looking for a meaningful trip?</span><span>·</span>
+      <span>Contact me</span><span>·</span>
+    </div>
+    <div class="marquee-group" aria-hidden="true">
+      <span>Looking for a meaningful trip?</span><span>·</span>
+      <span>Contact me</span><span>·</span>
+      <span>Looking for a meaningful trip?</span><span>·</span>
+      <span>Contact me</span><span>·</span>
+    </div>
+  </div>
+</div>
+
+<section class="form-section">
+  <div class="form-panel" id="contact">
+    <div class="letter-seal">
+      <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg>
+    </div>
+    <div class="letter-greeting">Dear traveller,</div>
+    <div class="eyebrow">LET'S START PLANNING YOUR PARIS EXPERIENCE</div>
+    <p class="form-tagline">The city, the timing, the intelligence to arrive <strong>ready</strong>.</p>
+    <h2>Tell me about your stay and I'll get back to you.</h2>
+    <form id="contact-form">
+      <div class="field-row">
+        <div class="field"><input type="text" id="f-name" placeholder="Name"></div>
+        <div class="field"><input type="email" id="f-email" placeholder="Email"></div>
+      </div>
+      <div class="field">
+        <select id="f-stay">
+          <option value="">What type of stay are you planning?</option>
+          <option value="City guidance">City guidance</option>
+          <option value="Family &amp; Friends">Family &amp; Friends</option>
+          <option value="Marriage proposal">Marriage proposal</option>
+          <option value="Events">Events</option>
+        </select>
+      </div>
+      <div class="field-row">
+        <div class="radio-group">
+          <label>Would you like to be contacted for a first chat?</label>
+          <div class="radio-opts">
+            <span><input type="radio" name="contact" value="Yes"> Yes</span>
+            <span><input type="radio" name="contact" value="No"> No</span>
+          </div>
+        </div>
+        <div class="radio-group">
+          <label>Do you already have travel dates for Paris?</label>
+          <div class="radio-opts">
+            <span><input type="radio" name="date-yn" value="Yes"> Yes</span>
+            <span><input type="radio" name="date-yn" value="No"> No</span>
+          </div>
+          <div>If yes, your travel date</div>
+          <input type="date" id="f-date">
+        </div>
+      </div>
+      <div class="field tz-field">
+        <label class="tz-label">Preferred time for a call <span>(optional — pick your own local time)</span></label>
+        <input type="datetime-local" id="f-slot">
+        <div class="tz-note" id="tz-note">Detecting your timezone…</div>
+      </div>
+      <div class="field"><textarea id="f-message" placeholder="Your message"></textarea></div>
+      <button type="submit" class="btn submit-btn">SEND MY REQUEST
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </form>
+    <div class="contact-footer">
+      <div class="contact-email">contact@understandparis.com</div>
+      <a class="ig-link" href="https://www.instagram.com/understand.paris/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1"/></svg>
+        Follow me on Instagram
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  function goToService(type){
+    var sel = document.getElementById('f-stay');
+    if(sel){ sel.value = type; }
+    var target = document.getElementById('contact');
+    if(target){ target.scrollIntoView({behavior:'smooth', block:'start'}); }
+    return false;
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    var tzNote = document.getElementById('tz-note');
+    var slotInput = document.getElementById('f-slot');
+    var visitorTz = Intl.DateTimeFormat().resolvedOptions().timeZone || 'your local timezone';
+
+    function updateTzNote(){
+      if(!slotInput.value){
+        tzNote.textContent = 'Your timezone: ' + visitorTz + ' — pick a date & time above to see it converted to Paris time.';
+        return;
+      }
+      var d = new Date(slotInput.value);
+      if(isNaN(d.getTime())){ return; }
+      var parisFmt = new Intl.DateTimeFormat('en-GB', {
+        timeZone: 'Europe/Paris',
+        weekday: 'short', day: 'numeric', month: 'short',
+        hour: '2-digit', minute: '2-digit'
+      });
+      var localFmt = new Intl.DateTimeFormat('en-GB', {
+        weekday: 'short', day: 'numeric', month: 'short',
+        hour: '2-digit', minute: '2-digit'
+      });
+      tzNote.textContent = localFmt.format(d) + ' (' + visitorTz + ')  →  ' + parisFmt.format(d) + ' Paris time';
+    }
+
+    updateTzNote();
+    slotInput.addEventListener('input', updateTzNote);
+  });
+
+  document.addEventListener('DOMContentLoaded', function(){
+    var form = document.getElementById('contact-form');
+    if(!form) return;
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var name = document.getElementById('f-name').value || '—';
+      var email = document.getElementById('f-email').value || '—';
+      var stay = document.getElementById('f-stay').value || '—';
+      var contactPref = (document.querySelector('input[name="contact"]:checked') || {}).value || '—';
+      var hasDate = (document.querySelector('input[name="date-yn"]:checked') || {}).value || '—';
+      var date = document.getElementById('f-date').value || '—';
+      var slotVal = document.getElementById('f-slot').value;
+      var slotInfo = '—';
+      if(slotVal){
+        var d = new Date(slotVal);
+        var visitorTz = Intl.DateTimeFormat().resolvedOptions().timeZone || 'local time';
+        var parisFmt = new Intl.DateTimeFormat('en-GB', {timeZone:'Europe/Paris', weekday:'short', day:'numeric', month:'short', hour:'2-digit', minute:'2-digit'});
+        var localFmt = new Intl.DateTimeFormat('en-GB', {weekday:'short', day:'numeric', month:'short', hour:'2-digit', minute:'2-digit'});
+        slotInfo = localFmt.format(d) + ' (' + visitorTz + ') = ' + parisFmt.format(d) + ' Paris time';
+      }
+      var message = document.getElementById('f-message').value || '—';
+
+      var subject = 'Paris trip enquiry — ' + name;
+      var body =
+        'Name: ' + name + '\n' +
+        'Email: ' + email + '\n' +
+        'Type of stay: ' + stay + '\n' +
+        'Wants a first chat: ' + contactPref + '\n' +
+        'Has travel dates: ' + hasDate + (hasDate === 'Yes' ? ' (' + date + ')' : '') + '\n' +
+        'Preferred call time: ' + slotInfo + '\n\n' +
+        'Message:\n' + message;
+
+      var mailto = 'mailto:contact@understandparis.com' +
+        '?subject=' + encodeURIComponent(subject) +
+        '&body=' + encodeURIComponent(body);
+
+      window.location.href = mailto;
+    });
+  });
+</script>
+</body>
+</html>
